@@ -1,0 +1,129 @@
+$primary-color: #d41872;
+$secondary-color: #a445b2;
+$tertiary-color: #fa4299;
+$text-color: #555;
+$transition-duration: 0.4s;
+
+@mixin transition($properties) {
+  transition: $properties $transition-duration;
+  -moz-transition: $properties $transition-duration;
+  -o-transition: $properties $transition-duration;
+  -webkit-transition: $properties $transition-duration;
+}
+
+@mixin gradient-background {
+  background: $primary-color;
+  background: -webkit-linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  background: -o-linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  background: -moz-linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  background: linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+}
+
+@mixin before-content($width: 0, $height: 0) {
+  content: "";
+  position: absolute;
+  width: $width;
+  height: $height;
+  @include transition(all);
+}
+
+.login-container {
+  min-width: 400px;
+  margin: auto;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.login-title {
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.list-group-item {
+  border-color: transparent;
+  border-bottom-color: var(--bs-list-group-border-color);
+  padding: 2rem 0;
+
+  &:has(input) {
+    padding: 2.5rem 0;
+  }
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+.input {
+  color: $text-color;
+  padding-left: 20px;
+
+  &::-webkit-input-placeholder {
+    color: $text-color !important;
+  }
+}
+
+.fa-solid {
+  padding-left: 3rem;
+  @include transition(all);
+}
+
+.fa-solid:has(~ .input:focus) {
+  padding-left: 2rem;
+  color: $primary-color;
+}
+
+.focus-input::before {
+  @include before-content(0, 1px);
+  left: 0;
+  bottom: -1px;
+  @include gradient-background;
+}
+
+.input:focus+.focus-input::before {
+  width: 100%;
+}
+// .has-val.input {
+//   padding-left: 0;
+// }
+
+
+.btn {
+  border: none;
+}
+
+.login-btn {
+  color: #fff;
+  text-transform: uppercase;
+  min-width: 160px;
+  height: 42px;
+  border-radius: 21px;
+  position: relative;
+  z-index: 1;
+  background: $primary-color;
+  background: linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  @include transition(all);
+
+  &:active {
+    color: #fff !important;
+  }
+
+  &::before {
+    @include before-content(100%, 100%);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    border-radius: 21px;
+    background-color: #555;
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
