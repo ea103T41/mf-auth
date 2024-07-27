@@ -1,7 +1,6 @@
 @import 'src/styles/variables.scss';
 
 .auth-container {
-  background-image: url('/assets/images/bg-01.jpg');
   background-image: url("#{$base-url}/assets/images/bg-01.jpg");
   background-repeat: no-repeat;
   background-position: center;

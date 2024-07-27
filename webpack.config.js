@@ -29,7 +29,7 @@ module.exports = {
         library: { type: "module" },
 
         // For remotes (please adjust)
-        name: "uf-auth",
+        name: "mf-auth",
         filename: "remoteEntry.js",
         exposes: {
             './authRoutes': './/src/app/app.routes.ts',
