@@ -26,13 +26,22 @@
 						"inlineStyleLanguage": "scss",
 						"assets": [
 							{
-								"glob": "**/*",
-								"input": "public",
-								"output": "."
-							}
+                "glob": "**/*",
+                "input": "public",
+                "output": "."
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets/"
+              }
 						],
 						"styles": [
-							"src/styles.scss"
+              {
+                "input": "src/styles/base.scss",
+                "bundleName": "auth-style" // Tell compiler to compile our style to remote-global.css
+              },
+              "src/styles/variables.scss"
 						],
 						"scripts": [],
 						"main": "src/main.ts",
@@ -101,7 +110,7 @@
 							}
 						],
 						"styles": [
-							"src/styles.scss"
+							"src/styles/base.scss"
 						],
 						"scripts": []
 					}
