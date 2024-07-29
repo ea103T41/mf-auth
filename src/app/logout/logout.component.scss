@@ -20,25 +20,10 @@
   }
 }
 
-.logout-msg {
-  text-align: center;
-  font-size: 1.5rem;
-}
-
 .logout-btn-group {
   margin: auto;
   padding: 1rem 0 1.5rem;
   &>.btn {
     margin: 0 0.5rem;
-  }
-}
-
-.cancel-btn {
-  background: grey;
-  color: #fff;
-  text-transform: uppercase;
-  border-radius: 21px;
-  &:hover {
-    background: #555;
   }
 }

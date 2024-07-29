@@ -83,3 +83,13 @@ $transition-duration: 0.4s;
     }
   }
 }
+
+.cancel-btn {
+  background: grey;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 21px;
+  &:hover {
+    background: #555;
+  }
+}
