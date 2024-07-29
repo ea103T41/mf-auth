@@ -1,0 +1,85 @@
+$primary-color: #d41872;
+$secondary-color: #a445b2;
+$tertiary-color: #fa4299;
+$text-color: #555;
+$transition-duration: 0.4s;
+
+@mixin transition($properties) {
+  transition: $properties $transition-duration;
+  -moz-transition: $properties $transition-duration;
+  -o-transition: $properties $transition-duration;
+  -webkit-transition: $properties $transition-duration;
+}
+
+@mixin gradient-background-right {
+  background: $primary-color;
+  background: -webkit-linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  background: -o-linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  background: -moz-linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  background: linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+}
+
+@mixin gradient-background-left {
+  background: $primary-color;
+  background: -webkit-linear-gradient(to left, $secondary-color, $primary-color, $tertiary-color);
+  background: -o-linear-gradient(to left, $secondary-color, $primary-color, $tertiary-color);
+  background: -moz-linear-gradient(to left, $secondary-color, $primary-color, $tertiary-color);
+  background: linear-gradient(to left, $secondary-color, $primary-color, $tertiary-color);
+}
+
+@mixin before-content($width: 0, $height: 0) {
+  content: "";
+  position: absolute;
+  width: $width;
+  height: $height;
+  @include transition(all);
+}
+
+.card-container {
+  min-width: 400px;
+  margin: auto;
+}
+
+.fa-solid {
+  padding-left: 3rem;
+  @include transition(all);
+}
+
+.btn {
+  border: none;
+}
+
+.main-btn {
+  color: #fff;
+  text-transform: uppercase;
+  min-width: 160px;
+  height: 42px;
+  border-radius: 21px;
+  position: relative;
+  z-index: 1;
+  background: $primary-color;
+  background: linear-gradient(to right, $secondary-color, $primary-color, $tertiary-color);
+  @include transition(all);
+
+  &:active {
+    color: #fff !important;
+  }
+
+  &::before {
+    @include before-content(100%, 100%);
+    @include gradient-background-left;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    border-radius: 21px;
+  }
+
+  &:hover {
+    background-color: transparent;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}

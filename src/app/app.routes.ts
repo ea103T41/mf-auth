@@ -1,13 +1,26 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
-    path: 'login',
-    component: HomeComponent
+    path: '',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        canMatch: [],
+        component: LoginComponent
+      },
+      {
+        path: 'logout',
+        canMatch: [],
+        component: LogoutComponent
+      },
+    ]
   },
-  { path: 'logout', component: HomeComponent },
+  { path: 'admin', component: HomeComponent },
   { path: '404', component: HomeComponent },
   { path: '**', redirectTo: '404' }
 ];

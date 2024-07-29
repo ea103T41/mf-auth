@@ -1,0 +1,44 @@
+@import 'common';
+
+.logout-img {
+  margin: auto;
+  padding: 3rem 0;
+  img {
+    width: 100px;
+    position: relative;
+    z-index: 2;
+  }
+  .square {
+    @include gradient-background-right;
+    opacity: 0.8;
+    width: 50px;
+    height: 80px;
+    position: absolute;
+    top: 3.6rem;
+    z-index: 1;
+    border-radius: 5px;
+  }
+}
+
+.logout-msg {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.logout-btn-group {
+  margin: auto;
+  padding: 1rem 0 1.5rem;
+  &>.btn {
+    margin: 0 0.5rem;
+  }
+}
+
+.cancel-btn {
+  background: grey;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 21px;
+  &:hover {
+    background: #555;
+  }
+}
