@@ -1,27 +1,32 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
     children: [
       {
         path: '',
         canMatch: [],
-        component: LoginComponent
+        loadComponent: () =>
+          import('./pages/login/login.component').then((m) => m.LoginComponent),
       },
       {
         path: 'logout',
         canMatch: [],
-        component: LogoutComponent
+        loadComponent: () =>
+          import('./pages/logout/logout.component').then((m) => m.LogoutComponent),
       },
-      { path: '404', component: NotFoundComponent },
+      { path: '404',
+        loadComponent: () =>
+          import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
+      },
     ]
   },
-  { path: 'admin', component: HomeComponent },
+  { path: 'admin',
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
   { path: '**', redirectTo: '404' }
 ];
