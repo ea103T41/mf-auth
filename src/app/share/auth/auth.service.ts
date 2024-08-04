@@ -30,7 +30,6 @@ export class AuthService {
   public login(user: User) {
     this._user.next(user);
     localStorage.setItem('token', JSON.stringify(user));
-    console.log(String(localStorage.getItem('token')));
   }
 
   public logout() {

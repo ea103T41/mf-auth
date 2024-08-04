@@ -18,10 +18,14 @@ export const authGuard: CanActivateFn = (route, state) => {
     referrerSvc.setReferrer(referrerUrl);
   }
 
+  if (currentUrl.startsWith('/4')) {
+    return true;
+  }
+
   if (!authSvc.isLogged) {
     // 確認當前 URL 不為登入頁面 (避免重定向到登入頁面後再重定向回來)
     if (!currentUrl.includes('/login')) {
-      return router.createUrlTree(['/login'], { queryParams: { referrer: currentUrl } });
+      return router.createUrlTree(['/login'], { queryParams: { referrer: referrerUrl } });
 
     } else {
       // 當前是登入頁面，允許訪問

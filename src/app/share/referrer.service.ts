@@ -5,20 +5,20 @@ import { Referrer } from '../models/referrer';
   providedIn: 'root',
 })
 export class ReferrerService {
-  constructor() {}
-
-  private referrer: Referrer | null = null;
+  private referrerKey = 'app_referrer';
 
   setReferrer(url: string): void {
-    this.referrer = { url };
+    const referrer: Referrer = { url };
+    localStorage.setItem(this.referrerKey, JSON.stringify(referrer));
   }
 
   getReferrer(): Referrer | null {
-    return this.referrer;
+    const referrerJson = localStorage.getItem(this.referrerKey);
+    return referrerJson ? JSON.parse(referrerJson) : null;
   }
 
   clearReferrer(): void {
-    this.referrer = null;
+    localStorage.removeItem(this.referrerKey);
   }
 
 }
