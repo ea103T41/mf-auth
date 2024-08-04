@@ -35,11 +35,6 @@ $transition-duration: 0.4s;
   @include transition(all);
 }
 
-.card-container {
-  min-width: 400px;
-  margin: auto;
-}
-
 .fa-solid {
   padding-left: 3rem;
   @include transition(all);
