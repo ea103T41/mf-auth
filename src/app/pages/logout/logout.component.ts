@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { AuthService } from '../../share/auth/auth.service';
 import { ReferrerService } from '../../share/referrer.service';
+import { ImageUrlService } from '../../share/image-url.service';
 
 @Component({
   selector: 'app-logout',
@@ -12,7 +12,6 @@ import { ReferrerService } from '../../share/referrer.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
-  baseUrl: string = environment.baseUrl;
   imagePath: string = '/assets/images/sign-out.png';
   refererUrl: string = '/';
   errorMessage: string = '';
@@ -21,6 +20,7 @@ export class LogoutComponent implements OnInit {
     private readonly router: Router,
     private readonly authSvc: AuthService,
     private readonly referrerSvc: ReferrerService,
+    private readonly imageUrlService: ImageUrlService,
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class LogoutComponent implements OnInit {
   }
 
   get imageUrl(): string {
-    return `${this.baseUrl}${this.imagePath}`;
+    return this.imageUrlService.getImageUrl(this.imagePath);
   }
 
   logout(): void {

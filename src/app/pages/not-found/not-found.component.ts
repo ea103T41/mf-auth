@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { ImageUrlService } from '../../share/image-url.service';
 
 @Component({
   selector: 'app-not-found',
@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent {
-  baseUrl: string = environment.baseUrl;
   imagePath: string = '/assets/images/error-404.png';
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly imageUrlService: ImageUrlService,
   ) {}
 
   get imageUrl(): string {
-    return `${this.baseUrl}${this.imagePath}`;
+    return this.imageUrlService.getImageUrl(this.imagePath);
   }
   
   cancel(): void {
