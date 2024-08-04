@@ -20,9 +20,5 @@ export class NotFoundComponent {
   get imageUrl(): string {
     return this.imageUrlService.getImageUrl(this.imagePath);
   }
-  
-  cancel(): void {
-    this.router.navigate(['../']); // 返回到上一頁
-  }
 
 }
